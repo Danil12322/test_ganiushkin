@@ -7,18 +7,20 @@ def read_sales_data(file_path):
             data = lines.strip().split(', ')
             sale = {'product_name': data[0], 'quantity': int(data[1]), 'price': int(data[2]), 'date': data[3]}
             data_sales.append(sale)
-    return data_sales        
+    return data_sales
+    
 def total_sales_per_product(sales_data):
     total_sales = defaultdict(int)
-    for sale in sales_data:
-        total_sales[sale['product_name']] += (sale['quantity'] * sale['price'])
+    for sales in sales_data:
+        total_sales[sales['product_name']] += (sales['quantity'] * sales['price'])
     return total_sales  
+    
 def sales_over_time(sales_data):
     total_sales_per_date = defaultdict(int)
-    for sale in sales_data:
-        total_sales_per_date[sale['date']] += (sale['quantity'] * sale['price'])
+    for sales in sales_data:
+        total_sales_per_date[sales['date']] += (sales['quantity'] * sales['price'])
     return total_sales_per_date
-15
+    
 def main(): 
     file_path = r'C:/Users/danil/Desktop/learn project/test_data.txt'
     sales_data = read_sales_data(file_path) 
@@ -39,10 +41,5 @@ def main():
     plt.xlabel('Дата')
     plt.ylabel('Сумма продаж')
     plt.show()
-
-
-
-
-
 
 main()
